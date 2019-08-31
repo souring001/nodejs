@@ -14,7 +14,7 @@ console.log('world');
 
 // blocking
 /*
-var start = new Date().getTime();
+let start = new Date().getTime();
 while (new Date().getTime() < start + 1000);
 console.log('world');
 */

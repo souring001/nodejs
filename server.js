@@ -1,15 +1,15 @@
-var http = require('http'),
+let http = require('http'),
     fs = require('fs'),
     ejs = require('ejs'),
     qs = require('querystring');
-var settings = require('./settings');
+let settings = require('./settings');
 console.log(settings);
-var server =  http.createServer();
-var template = fs.readFileSync(__dirname + '/public_html/bbs.ejs', 'utf-8');
-var posts = [];
+let server =  http.createServer();
+let template = fs.readFileSync(__dirname + '/public_html/bbs.ejs', 'utf-8');
+let posts = [];
 
 function renderForm(posts, res){
-    var data = ejs.render(template, {
+    let data = ejs.render(template, {
         posts: posts
     });
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -25,7 +25,7 @@ server.on('request', function(req, res) {
             // console.log(req.data);
         });
         req.on("end", function() {
-            var query = qs.parse(req.data);
+            let query = qs.parse(req.data);
             // console.log(query);
             posts.push(query.name);
             renderForm(posts, res);

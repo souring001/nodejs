@@ -1,4 +1,4 @@
-var MongoClient = require('mongodb').MongoClient,
+let MongoClient = require('mongodb').MongoClient,
     settings = require('./settings');
 MongoClient.connect("mongodb://"+settings.host+"/"+settings.db, function(err, client){
     if(err) { return console.dir(err); }
@@ -6,7 +6,7 @@ MongoClient.connect("mongodb://"+settings.host+"/"+settings.db, function(err, cl
     const db = client.db(settings.db);
     db.collection("users", function(err, collection){
         if(err) { return console.dir(err); }
-        var docs = [
+        let docs = [
             {name: "tsuduki", score: 40},
             {name: "gotoh", score: 80},
             {name: "ishibashi", score: 60}
@@ -20,7 +20,7 @@ MongoClient.connect("mongodb://"+settings.host+"/"+settings.db, function(err, cl
         //     console.log(items);
         // });
 
-        var stream = collection.find({name: "gotoh"}).stream();
+        let stream = collection.find({name: "gotoh"}).stream();
         stream.on("data", function(item){
             console.log(item);
         });
